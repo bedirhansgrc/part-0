@@ -1,0 +1,17 @@
+sequenceDiagram
+    participant browser
+    participant server
+
+    browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/new_note
+    activate server
+    server-->>browser: 201 Created (New note added)
+    deactivate server
+
+    Note right of browser: User input and interaction to create a new note
+
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/data.json
+    activate server
+    server-->>browser: Updated JSON data with the new note
+    deactivate server
+
+    Note right of browser: The browser updates the SPA to reflect the new note
